@@ -1,2 +1,4 @@
 # mini-soc
-Home SOC lab: Splunk, Sysmon, detections and incident write-ups
+
+A home SOC lab built from scratch to learn log analysis, detection and incident response.
+
