@@ -1,6 +1,34 @@
 \# CHANGELOG
 
-&#x20;
+
+
+\## 2026-10-13 | W2 Session 2/3: Sysmon event IDs
+
+Did
+
+\- Installed Sysmon on my host PC with the SwiftOnSecurity config.
+
+\- Generated and read Sysmon events 1, 3, 11 and 22 using whoami, Test-NetConnection and Invoke-WebRequest.
+
+\- Linked events from one process using ProcessGuid.
+
+
+
+Learned
+
+\- Sysmon has its own log: Applications and Services Logs > Microsoft > Windows > Sysmon > Operational.
+
+\- Sysmon IDs: 1 = process created, 3 = network connection, 11 = file created, 13 = registry value set, 22 = DNS query. 4 and 16 = Sysmon stopped or config changed, possible tampering.
+
+\- A hash is the fingerprint of a file. Renaming the file does not change it.
+
+\- Event 22 + Event 3 show which program connected to which domain.
+
+\- ProcessGuid links all events from one run of a program.
+
+\- The config decides what gets logged. No log does not prove nothing happened.
+
+
 
 \## 2026-10-12 | W2 Session 1/3: Windows Security events 4624, 4625, 4688
 
@@ -11,6 +39,8 @@ Did
 \- Enabled Process Creation auditing and command-line logging, then generated 4688 events with notepad, whoami and dir.
 
 \- Traced a parent-child process chain by matching Creator Process ID to New Process ID.
+
+
 
 Learned
 
@@ -29,6 +59,7 @@ Learned
 \- Parent process matters: winword.exe launching cmd.exe usually means a malicious macro.
 
 
+
 \## 2026-10-11 | W1 Session 2/2: Create the mini-soc repo
 
 Did
@@ -37,6 +68,8 @@ Did
 
 \- Created mini-soc on GitHub, cloned it, added TODO, CHANGELOG and README, pushed.
 
+
+
 Learned
 
 \- add = ready to commit, commit = local history, push = on GitHub.
@@ -44,11 +77,14 @@ Learned
 \- origin = the name Git gives the GitHub cloned repo. origin/main = the main branch on GitHub.
 
 
+
 \## 2026-10-10 | W1 Session 1/2: Git and GitHub basics
 
 Did
 
 \- Finished GitHub Skills "Introduction to GitHub": branch, commit, pull request, merge.
+
+
 
 Learned
 
