@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 2026-10-15 | W3 Session 1/3: VMware and the isolated lab network
+
+Did
+
+* Installed VMware Workstation Pro. Downloaded the Ubuntu Server and Windows Server 2022 ISOs.
+* Created VMnet2: host-only, DHCP off, subnet 192.168.50.0/24. Host adapter is 192.168.50.1.
+Learned
+* Bridged = VM joins my home network. NAT = VM gets internet through the host. Host-only = private network for VMs and host only, no internet.
+* Host-only keeps attack traffic inside the lab.
+* DHCP is off because other machines depend on fixed IPs: the forwarder sends to Splunk, clients use the DC for DNS.
+
 ## 2026-10-14 | W2 Session 3/3: MITRE ATT\&CK basics
 
 Did
