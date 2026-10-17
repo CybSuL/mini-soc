@@ -1,5 +1,15 @@
 ﻿# CHANGELOG
 
+## 2026-10-17 | W3 Session 3/3: Basic Linux commands
+Did
+- Read SSH logs with journalctl and filtered them with grep.
+- Caused a failed SSH login on purpose and found it in the logs.
+- Checked the SSH service with systemctl.
+
+Learned
+- Files starting with . are hidden from ls by default. Always use ls -la, attackers hide files this way.
+- A disabled service does not start on boot. SSH still works because ssh.socket is enabled and starts it on the first connection.
+
 ## 2026-10-16 | W3 Session 2/3: Build the Ubuntu Server VM
 Did
 - Created the splunk VM.
