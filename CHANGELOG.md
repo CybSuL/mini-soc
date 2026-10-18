@@ -1,5 +1,18 @@
 ﻿# CHANGELOG
 
+## 2026-10-18 | W4 Session 1/3: Build the Windows Server VM
+Did
+- Created the dc01 VM (4 GB RAM, 2 vCPU, 60 GB disk, VMnet2 only) and installed Windows Server 2022 Standard Evaluation (Desktop Experience).
+- Set static IP 192.168.50.10, mask 255.255.255.0, no gateway, DNS 192.168.50.10.
+- Ping from DC01 to Ubuntu worked.
+- Took snapshot clean-install-static-ip.
+
+Learned
+- DC = domain controller. It manages all users, computers and logins in the domain. Owning it means owning the domain.
+- DC01 has no NAT adapter: it stays isolated, and a second DNS server from NAT would break AD.
+- No gateway: VMnet2 has no router, and machines on the same subnet do not need one.
+- A DC uses itself for DNS because domain computers find it through DNS.
+
 ## 2026-10-17 | W3 Session 3/3: Basic Linux commands
 Did
 - Read SSH logs with journalctl and filtered them with grep.
