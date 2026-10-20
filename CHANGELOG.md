@@ -1,5 +1,15 @@
 ﻿# CHANGELOG
 
+## 2026-10-20 | W4 Session 2/3: Install Splunk Enterprise on the Ubuntu VM
+Did
+- Installed Splunk Enterprise 10.6.1.1, running as the splunk user.
+- Set Splunk to start on boot and confirmed it after a reboot.
+- Took snapshot splunk-installed.
+
+Learned
+- Least privilege: Splunk listens on network ports (8000, 9997), so it runs as the splunk user, not root.
+- A setting is not proven until tested: reboot, then check the service.
+
 ## 2026-10-18 | W4 Session 1/3: Build the Windows Server VM
 Did
 - Created the dc01 VM (4 GB RAM, 2 vCPU, 60 GB disk, VMnet2 only) and installed Windows Server 2022 Standard Evaluation (Desktop Experience).
