@@ -1,5 +1,18 @@
 ﻿# CHANGELOG
 
+## 2026-10-21 | W4 Session 3/3: Reach the Splunk web UI and open the receiving port
+Did
+- Turned on the Ubuntu firewall (ufw) and allowed only the lab network on ports 22, 8000 and 9997.
+- Logged in to the Splunk web UI from my host at http://192.168.50.20:8000.
+- Turned on receiving on port 9997 and tested it from DC01 with Test-NetConnection.
+- Took snapshot splunk-ready.
+
+Learned
+- Ports: 22 = SSH, 8000 = Splunk web UI, 9997 = logs from forwarders, 8089 = Splunk management.
+- A connection needs both: a service listening on the port and a firewall rule allowing it. Check both when it fails.
+- Add the SSH rule before enabling the firewall, or new SSH connections get blocked.
+- The web UI uses http, so the password crosses the network unencrypted. Fine on an isolated lab network only.
+
 ## 2026-10-20 | W4 Session 2/3: Install Splunk Enterprise on the Ubuntu VM
 Did
 - Installed Splunk Enterprise 10.6.1.1, running as the splunk user.

@@ -1,7 +1,10 @@
 ﻿# TODO
 
-## W4: Splunk and the Windows Server VM
-- [ ] W4 Session 3/3: Reach the Splunk web UI from my host and open the receiving port for forwarders
+## W5
+- [ ] W5: Promote the server to a domain controller, create users and groups. Build the Windows client and join it to the domain.
+
+## Before W5
+- [ ] Record the W4 review video (max 7 min, English then Arabic)
 
 ## Before W7
 - [ ] Disconnect the Ubuntu VM's NAT adapter before running any attacks
@@ -20,3 +23,4 @@
 - [x] W3 Session 3/3: Basic Linux commands, read and filtered SSH logs (2026-10-17)
 - [x] W4 Session 1/3: Windows Server VM DC01 built at 192.168.50.10, snapshot taken (2026-10-18)
 - [x] W4 Session 2/3: Splunk Enterprise installed on the Ubuntu VM, starts on boot, snapshot taken (2026-10-20)
+- [x] W4 Session 3/3: Splunk web UI reachable from my host, receiving on port 9997 tested from DC01 (2026-10-21)
