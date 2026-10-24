@@ -1,5 +1,19 @@
 ﻿# CHANGELOG
 
+## 2026-10-24 | W5 Session 1/3: Promote DC01 to a domain controller
+Did
+- Installed the AD DS role with its management tools.
+- Promoted DC01 to the first domain controller of a new forest: minisoc.lab (short name MINISOC), with DNS installed.
+- Verified with Get-ADDomain, nslookup and the domain controller SRV record lookup.
+- Took snapshot dc-promoted.
+
+Learned
+- AD = Microsoft's directory: a database of users, computers and groups, plus services like checking logins.
+- Domain = users and computers managed centrally under one set of rules.
+- Forest = the top container, holding one or more domains. It is the security boundary.
+- DC = the server that holds the AD database and checks logins.
+- Clients find the DC through a DNS SRV record (_ldap._tcp.dc._msdcs.minisoc.lab). DNS only says where the DC is; the DC checks the password (Kerberos).
+
 ## 2026-10-21 | W4 Session 3/3: Reach the Splunk web UI and open the receiving port
 Did
 - Turned on the Ubuntu firewall (ufw) and allowed only the lab network on ports 22, 8000 and 9997.
