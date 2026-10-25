@@ -1,5 +1,19 @@
 ﻿# CHANGELOG
 
+## 2026-10-25 | W5 Session 2/3: Create OUs, users and groups
+Did
+- Created OUs Staff, Admins, Groups and Workstations under minisoc.lab.
+- Created users alice.smith and bob.jones in Staff.
+- Created my admin account sul.admin in Admins and added it to Domain Admins.
+- Created the Global security group Finance in Groups, with Alice and Bob as members.
+- Took snapshot ad-users-groups.
+
+Learned
+- OU vs container: both hold objects, but only OUs can have Group Policy applied and management delegated.
+- Admins use a personal admin account, not the built-in Administrator: attackers know that name, and it hides who did what.
+- Every new account is automatically in Domain Users.
+- Permissions go to groups, not people. On a role change, remove the old group too, or the access stays (privilege creep).
+
 ## 2026-10-24 | W5 Session 1/3: Promote DC01 to a domain controller
 Did
 - Installed the AD DS role with its management tools.

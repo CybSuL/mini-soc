@@ -1,7 +1,6 @@
 ﻿# TODO
 
 ## W5
-- [ ] W5 Session 2/3: Create OUs, users and groups in Active Directory Users and Computers
 - [ ] W5 Session 3/3: Build the Windows client VM (192.168.50.100, DNS 192.168.50.10) and join it to minisoc.lab
 
 ## Before W7
@@ -24,3 +23,4 @@
 - [x] W4 Session 3/3: Splunk web UI reachable from my host, receiving on port 9997 tested from DC01 (2026-10-21)
 - [x] W4 review video recorded (2026-10-22)
 - [x] W5 Session 1/3: DC01 promoted, forest minisoc.lab created, AD DS and DNS verified, snapshot taken (2026-10-24)
+- [x] W5 Session 2/3: OUs, users alice.smith, bob.jones, sul.admin and group Finance created, snapshot taken (2026-10-25)
