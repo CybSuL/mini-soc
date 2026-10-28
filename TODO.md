@@ -1,7 +1,10 @@
 ﻿# TODO
 
-## W5
-- [ ] W5 Session 3/3: Build the Windows client VM (192.168.50.100, DNS 192.168.50.10) and join it to minisoc.lab
+## Before W6
+- [ ] Record the W5 review video
+
+## W6
+- [ ] W6: Install Sysmon on DC + client, install the Universal Forwarder, see Sysmon Event ID 1 in Splunk. Milestone: draw your own data-flow diagram from memory.
 
 ## Before W7
 - [ ] Disconnect the Ubuntu VM's NAT adapter before running any attacks
@@ -24,3 +27,4 @@
 - [x] W4 review video recorded (2026-10-22)
 - [x] W5 Session 1/3: DC01 promoted, forest minisoc.lab created, AD DS and DNS verified, snapshot taken (2026-10-24)
 - [x] W5 Session 2/3: OUs, users alice.smith, bob.jones, sul.admin and group Finance created, snapshot taken (2026-10-25)
+- [x] W5 Session 3/3: Windows 11 client WS01 built at 192.168.50.100, joined to minisoc.lab, moved to Workstations, snapshots taken (2026-10-28)

@@ -1,5 +1,20 @@
 ﻿# CHANGELOG
 
+## 2026-10-28 | W5 Session 3/3: Build the Windows client and join it to the domain
+Did
+- Created the ws01 VM (4 GB RAM, 2 vCPU, 60 GB disk, virtual TPM, VMnet2 only) and installed Windows 11 Enterprise Evaluation with a local account.
+- Installed VMware Tools for copy and paste.
+- Set static IP 192.168.50.100 and DNS 192.168.50.10.
+- Joined minisoc.lab with sul.admin, renamed the PC to WS01, logged in as MINISOC\alice.smith.
+- Moved WS01 from the Computers container to the Workstations OU.
+- Took snapshots clean-install-static-ip (ws01, before the join), domain-joined (WS01) and ws01-joined (DC01).
+
+Learned
+- The client's DNS server is DC01. DC01 off = DNS timeouts, so no domain join and no domain logins.
+- New computers land in the Computers container. Move them to an OU so Group Policy can apply.
+- Normal users cannot change system settings (least privilege). A phished user gives the attacker only those rights.
+- Snapshot the DC and clients together. Rolling back only one can break the computer account password they share (trust relationship failed).
+
 ## 2026-10-25 | W5 Session 2/3: Create OUs, users and groups
 Did
 - Created OUs Staff, Admins, Groups and Workstations under minisoc.lab.
