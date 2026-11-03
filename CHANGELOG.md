@@ -1,5 +1,19 @@
 ﻿# CHANGELOG
 
+## 2026-11-03 | W6 Session 1/3: Install Sysmon on DC01 and WS01
+Did
+- Copied Sysmon and the SwiftOnSecurity config to C:\Tools\Sysmon on DC01 and WS01 with VMware Tools copy-paste.
+- Installed Sysmon with the config on both. Service Sysmon64 is running on both.
+- Saw Sysmon events in the Sysmon Operational log on WS01.
+- Noticed that WS01's clock showed 7:29 PM while my host showed 9:30 AM. Moved the clock check to Session 2.
+
+Learned
+- .\ runs a file from the current folder only. "Not recognized" means the wrong folder: check with Get-Location. Extract All can create a subfolder.
+- Installing a service needs admin rights. In a non-admin PowerShell, the Sysmon install fails and no service is created.
+- Sysmon goes on the DC too: domain account creation, Kerberos ticket requests and lateral movement all leave evidence there.
+- Sysmon Event ID 1 adds what 4688 lacks: hashes, ProcessGuid (PIDs get reused, GUIDs don't), parent command line. 4688 is not enabled on DC01 or WS01.
+- All lab machines must agree on the real time. Time zones can differ because Splunk stores events in UTC. Kerberos fails above 5 minutes of difference, and a wrong clock hides events from searches like "Last 15 minutes".
+
 ## 2026-10-28 | W5 Session 3/3: Build the Windows client and join it to the domain
 Did
 - Created the ws01 VM (4 GB RAM, 2 vCPU, 60 GB disk, virtual TPM, VMnet2 only) and installed Windows 11 Enterprise Evaluation with a local account.
