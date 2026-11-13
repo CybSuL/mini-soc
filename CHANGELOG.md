@@ -1,5 +1,29 @@
 ﻿# CHANGELOG
 
+## 2026-11-13 | W6 Session 2/3: Install the Universal Forwarder on DC01 and WS01 (started 2026-11-12)
+Did
+- Found DC01 and WS01 clocks 10 hours ahead of real time. Turned on VMware Tools "Synchronize guest time with host" on both, set the time zone to Arab Standard Time on both and Asia/Riyadh on the Splunk VM.
+- Created the index windows in Splunk.
+- Downloaded Universal Forwarder 10.6.1.1 with winget download (no Splunk account needed).
+- Installed the forwarder on WS01 with the wizard and on DC01 silently with msiexec. Both send to 192.168.50.20:9997.
+- Wrote inputs.conf on both: Security and Sysmon Operational logs to the index windows.
+- Sysmon events from WS01 were missing. splunkd.log showed errorCode=5. Switched the SplunkForwarder service to Local System on both.
+- Verified with index=windows | stats count by host, source: Security and Sysmon arrive from DC01 and WS01.
+- Skipped the snapshot. Last snapshots are still from W5.
+
+Learned
+- Compare clocks in UTC. Time zones can differ, the actual time cannot.
+- WS01 was not syncing time from DC01: its source was Local CMOS Clock.
+- VMware Tools time sync only moves a guest clock forward, never back.
+- Index = separate storage in Splunk. Searches and detections target it by name.
+- Port 8000 = web UI for people. Port 9997 = data coming in from forwarders.
+- inputs.conf has one [WinEventLog://channel] block per log, with disabled = 0 and the target index.
+- Write Splunk .conf files as ascii. A UTF-8 BOM can break the first block, and that log silently never arrives.
+- Events missing: check the forwarder's own log (splunkd.log) before guessing. errorCode=5 = Access denied.
+- Since 9.1, the forwarder runs as NT SERVICE\SplunkForwarder, which can read Security but not Sysmon. Local System fixes it in the lab. In production, grant read access to the Sysmon channel only (least privilege).
+- A forwarder must not be newer than the Splunk server.
+- "Last 15 minutes" is a moving window, so counts change between runs.
+
 ## 2026-11-03 | W6 Session 1/3: Install Sysmon on DC01 and WS01
 Did
 - Copied Sysmon and the SwiftOnSecurity config to C:\Tools\Sysmon on DC01 and WS01 with VMware Tools copy-paste.

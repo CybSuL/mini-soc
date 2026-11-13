@@ -1,9 +1,6 @@
 ﻿# TODO
 
 ## W6
-- [ ] W6 Session 2/3: Install the Universal Forwarder on DC01 and WS01 and send Sysmon and Security logs to Splunk
-  - First: compare the clocks on DC01, WS01 and the Splunk VM (WS01 showed 7:29 PM while my host showed 9:30 AM)
-  - First: snapshot DC01 and WS01 together as sysmon-installed
 - [ ] W6 Session 3/3: Find Sysmon Event ID 1 in Splunk, draw the data-flow diagram from memory, add the forwarder config to configs/
 
 ## Before W7
@@ -31,3 +28,4 @@
 - [x] W5 Session 3/3: Windows 11 client WS01 built at 192.168.50.100, joined to minisoc.lab, moved to Workstations, snapshots taken (2026-10-28)
 - [x] W5 review video recorded (before 2026-11-02)
 - [x] W6 Session 1/3: Sysmon installed with the SwiftOnSecurity config on DC01 and WS01, running on both (2026-11-03)
+- [x] W6 Session 2/3: Universal Forwarder on DC01 and WS01 sending Security and Sysmon logs to the index windows, clocks fixed (2026-11-13)
