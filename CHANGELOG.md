@@ -1,5 +1,22 @@
 ﻿# CHANGELOG
 
+## 2026-11-14 | W6 Session 3/3: Find Sysmon Event ID 1 in Splunk and draw the data flow
+Did
+- Ran whoami /groups on WS01 and found its Sysmon Event ID 1 in Splunk with a search I wrote myself.
+- Read Image, CommandLine, User and ParentImage in that event.
+- Drew the lab data flow from memory, then added docs/architecture.svg to the README.
+- Added the forwarder config to the repo as configs/splunk-uf/inputs.conf.
+
+Learned
+- SPL: field names are case-sensitive, field values are not. Quote values that contain anything other than letters and numbers.
+- Sysmon Event ID 1 answers four questions: what ran (Image), how (CommandLine), who (User), from where (ParentImage).
+- An unusual parent is a red flag: WINWORD.EXE starting whoami points to a malicious macro doing Discovery (T1033).
+- Data flow: Sysmon records the process, writes it to the Sysmon Operational log, the forwarder reads it (inputs.conf) and sends it on port 9997, Splunk stores it in the index windows, I search on port 8000.
+- WS01 needs DC01 for DNS and for domain logins.
+- inputs.conf has no secrets, so it is safe to publish. Never commit etc\passwd or etc\auth.
+- Splunk settings go in etc\system\local: upgrades overwrite default, local overrides it and survives.
+- Copying a command on the host replaces whatever a VM put on the clipboard.
+
 ## 2026-11-13 | W6 Session 2/3: Install the Universal Forwarder on DC01 and WS01 (started 2026-11-12)
 Did
 - Found DC01 and WS01 clocks 10 hours ahead of real time. Turned on VMware Tools "Synchronize guest time with host" on both, set the time zone to Arab Standard Time on both and Asia/Riyadh on the Splunk VM.

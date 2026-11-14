@@ -1,0 +1,38 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 560" width="880" height="560" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#333"/>
+    </marker>
+  </defs>
+  <rect width="880" height="560" fill="#ffffff"/>
+  <rect x="20" y="20" width="840" height="400" fill="none" stroke="#999" stroke-dasharray="6 4"/>
+  <text x="32" y="40" fill="#666">VMnet2 (host-only) 192.168.50.0/24</text>
+  <rect x="50" y="70" width="200" height="150" rx="6" fill="#dae8fc" stroke="#6c8ebf"/>
+  <text x="150" y="98" text-anchor="middle" font-weight="bold" font-size="15">WS01</text>
+  <text x="150" y="118" text-anchor="middle" fill="#444">192.168.50.100</text>
+  <text x="150" y="150" text-anchor="middle">Sysmon</text>
+  <text x="150" y="170" text-anchor="middle">Event logs</text>
+  <text x="150" y="190" text-anchor="middle">Universal Forwarder</text>
+  <rect x="340" y="70" width="200" height="150" rx="6" fill="#fff2cc" stroke="#d6b656"/>
+  <text x="440" y="98" text-anchor="middle" font-weight="bold" font-size="15">DC01</text>
+  <text x="440" y="118" text-anchor="middle" fill="#444">192.168.50.10 · AD + DNS</text>
+  <text x="440" y="150" text-anchor="middle">Sysmon</text>
+  <text x="440" y="170" text-anchor="middle">Event logs</text>
+  <text x="440" y="190" text-anchor="middle">Universal Forwarder</text>
+  <rect x="630" y="70" width="200" height="150" rx="6" fill="#d5e8d4" stroke="#82b366"/>
+  <text x="730" y="98" text-anchor="middle" font-weight="bold" font-size="15">Splunk</text>
+  <text x="730" y="118" text-anchor="middle" fill="#444">192.168.50.20</text>
+  <text x="730" y="150" text-anchor="middle">Receives on 9997</text>
+  <text x="730" y="170" text-anchor="middle">index = windows</text>
+  <text x="730" y="190" text-anchor="middle">Web UI on 8000</text>
+  <line x1="250" y1="145" x2="338" y2="145" stroke="#333" stroke-dasharray="5 4" marker-end="url(#a)"/>
+  <text x="295" y="137" text-anchor="middle" font-size="11" fill="#555">DNS + logins</text>
+  <polyline points="150,220 150,300 700,300 700,222" fill="none" stroke="#333" marker-end="url(#a)"/>
+  <line x1="440" y1="220" x2="440" y2="300" stroke="#333"/>
+  <text x="420" y="322" text-anchor="middle" fill="#333">Sysmon + Security logs (port 9997)</text>
+  <rect x="680" y="460" width="160" height="60" rx="6" fill="#f5f5f5" stroke="#666"/>
+  <text x="760" y="486" text-anchor="middle" font-weight="bold">My host PC</text>
+  <text x="760" y="504" text-anchor="middle" fill="#444">browser</text>
+  <line x1="790" y1="460" x2="790" y2="222" stroke="#333" marker-end="url(#a)"/>
+  <text x="782" y="390" text-anchor="end" font-size="12" fill="#333">port 8000</text>
+</svg>

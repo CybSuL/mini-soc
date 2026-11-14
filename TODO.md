@@ -1,11 +1,12 @@
 ﻿# TODO
 
-## W6
-- [ ] W6 Session 3/3: Find Sysmon Event ID 1 in Splunk, draw the data-flow diagram from memory, add the forwarder config to configs/
+## W7
+- [ ] W7: Kali VM + Atomic Red Team. Run the first test (T1059.001 PowerShell) and find it in Splunk.
 
 ## Before W7
 - [ ] Record the W6 review video
 - [ ] Disconnect the Ubuntu VM's NAT adapter before running any attacks
+- [ ] Decide whether to log every Atomic test run (date, time, host, technique, test ID) as labeled data for Braindance
 
 ## Before 2026-12-19
 - [ ] Switch Splunk from the Enterprise Trial license to the Free license
@@ -29,3 +30,4 @@
 - [x] W5 review video recorded (before 2026-11-02)
 - [x] W6 Session 1/3: Sysmon installed with the SwiftOnSecurity config on DC01 and WS01, running on both (2026-11-03)
 - [x] W6 Session 2/3: Universal Forwarder on DC01 and WS01 sending Security and Sysmon logs to the index windows, clocks fixed (2026-11-13)
+- [x] W6 Session 3/3: Found Sysmon Event ID 1 in Splunk, data-flow diagram drawn from memory, inputs.conf added to configs/ (2026-11-14)
