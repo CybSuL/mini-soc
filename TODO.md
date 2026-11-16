@@ -1,12 +1,9 @@
 ﻿# TODO
 
 ## W7
-- [ ] W7: Kali VM + Atomic Red Team. Run the first test (T1059.001 PowerShell) and find it in Splunk.
-
-## Before W7
-- [ ] Record the W6 review video
-- [ ] Disconnect the Ubuntu VM's NAT adapter before running any attacks
-- [ ] Decide whether to log every Atomic test run (date, time, host, technique, test ID) as labeled data for Braindance
+- [ ] W7 Session 1/3: Lab prep and the Kali VM. Left: fix the invisible mouse cursor in Kali, turn off its screen lock and sleep, test that Kali reaches Splunk and DC01 (DNS), snapshot kali as clean-static-ip.
+- [ ] W7 Session 2/3: Get Atomic Red Team onto WS01, handle Defender, snapshot WS01 before any attack.
+- [ ] W7 Session 3/3: Run T1059.001, find its Sysmon Event ID 1 in Splunk, record the run in attack-log.csv.
 
 ## Before 2026-12-19
 - [ ] Switch Splunk from the Enterprise Trial license to the Free license
@@ -31,3 +28,6 @@
 - [x] W6 Session 1/3: Sysmon installed with the SwiftOnSecurity config on DC01 and WS01, running on both (2026-11-03)
 - [x] W6 Session 2/3: Universal Forwarder on DC01 and WS01 sending Security and Sysmon logs to the index windows, clocks fixed (2026-11-13)
 - [x] W6 Session 3/3: Found Sysmon Event ID 1 in Splunk, data-flow diagram drawn from memory, inputs.conf added to configs/ (2026-11-14)
+- [x] W6 review video recorded (2026-11-15)
+- [x] Ubuntu VM NAT adapter disconnected before running attacks (2026-11-15)
+- [x] attack-log.csv created to record every attack test (2026-11-15)
