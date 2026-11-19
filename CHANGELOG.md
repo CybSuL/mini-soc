@@ -1,6 +1,6 @@
 ﻿# CHANGELOG
 
-## 2026-11-16 | W7 Session 1/3 (in progress, started 2026-11-15): Lab prep and the Kali VM
+## 2026-11-17 | W7 Session 1/3: Lab prep and the Kali VM (started 2026-11-15)
 Did
 - Recorded the W6 review video.
 - Disconnected the NAT adapter on the splunk VM. No internet, DC01 and the web UI still reachable.
@@ -11,7 +11,10 @@ Did
 - Opened it as the kali VM: 4 GB RAM, 2 cores, one adapter on VMnet2, set before the first boot.
 - Set static IP 192.168.50.250/24, DNS 192.168.50.10, no gateway with nmcli. Ping to 8.8.8.8 fails.
 - Changed the default kali password.
-- Open issue: mouse cursor invisible in Kali. Unticking "Accelerate 3D graphics" did not fix it.
+- Fixed the invisible mouse cursor by changing the VM's hardware compatibility from Workstation 8.x to 25H2. Toggling 3D acceleration did nothing; a software cursor worked but lagged.
+- Turned off screen lock and sleep in Kali.
+- Kali reaches Splunk (ping) and DC01's DNS (nslookup minisoc.lab).
+- Took snapshot clean-static-ip on kali.
 
 Learned
 - At boot, Ubuntu waits for every netplan interface. One with dhcp4 and no cable waits until the 2-minute timeout. optional: true skips it.
@@ -24,6 +27,9 @@ Learned
 - VMnet2 has no DHCP, so every VM needs a static IP.
 - Windows Firewall blocks inbound ping by default. Test DC01 another way, like DNS.
 - Default credentials are an attack path (T1078.001). Change them even in a lab.
+- Old virtual hardware can break a new guest kernel. When a VM image misbehaves, check its hardware compatibility first.
+- An Xorg config that names a missing graphics driver stops the desktop from starting. Ctrl+Alt+F3 gives a text login to undo it.
+- nslookup "Server: 192.168.50.10#53" = the DNS server's IP and the port it answered on (53 = DNS).
 
 ## 2026-11-14 | W6 Session 3/3: Find Sysmon Event ID 1 in Splunk and draw the data flow
 Did
