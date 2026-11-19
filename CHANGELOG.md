@@ -1,5 +1,24 @@
 ﻿# CHANGELOG
 
+## 2026-11-19 | W7 Session 2/3: Get Atomic Red Team onto WS01
+Did
+- Downloaded the Invoke-AtomicRedTeam module and its dependency powershell-yaml with Save-Module (download only, no install) to E:\Mini-SOC Project\AtomicStaging, outside the repo.
+- Downloaded only the T1059.001 test definition (T1059.001.yaml) from the atomic-red-team GitHub repo. No Defender exclusion on my host.
+- Copied Modules and atomics to C:\AtomicRedTeam on WS01 with VMware Tools copy-paste, signed in as sul.admin.
+- Added a Defender exclusion on WS01 for C:\AtomicRedTeam only.
+- Loaded the module and listed the T1059.001 tests with -ShowDetailsBrief: 21 tests for Windows. Ran nothing.
+- Took snapshot atomic-ready on ws01. DC01 unchanged since pre-attacks-sysmon-uf.
+
+Learned
+- Invoke-AtomicRedTeam = the engine that runs tests. atomics\<technique>\<technique>.yaml = the tests for one technique. One technique has many tests (procedures).
+- Downloading a file does not run it. Atomic tests are text; nothing executes until I run Invoke-AtomicTest.
+- Attack tools stay outside the public repo, or git add . pushes them to GitHub.
+- Set-ExecutionPolicy Bypass -Scope Process allows scripts in that window only.
+- Adding a Defender exclusion is an attacker technique (T1562.001). It shows as Event ID 5007 in the Defender Operational log, which my forwarder does not collect yet.
+- A path exclusion only protects files. Defender can still block suspicious PowerShell behavior at run time.
+- Many tests need the internet (download cradles) and will fail in the isolated lab.
+- Rolling back only WS01 is safe while its computer account password has not changed since the snapshot. "Trust relationship failed" means it has.
+
 ## 2026-11-17 | W7 Session 1/3: Lab prep and the Kali VM (started 2026-11-15)
 Did
 - Recorded the W6 review video.
