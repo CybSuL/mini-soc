@@ -1,5 +1,26 @@
 ﻿# CHANGELOG
 
+## 2026-11-20 | W7 Session 3/3: Run the first attack and find it in Splunk
+Did
+- Read Atomic test T1059.001-17 (PowerShell Command Execution) with -ShowDetails before running it: cmd.exe executor, no admin, no dependencies.
+- Ran it on WS01 as MINISOC\alice.smith at 05:40 UTC. It printed "Hello, from PowerShell!". No cleanup needed.
+- Logged the run as the first row of attack-log.csv.
+- Found it in Splunk: Sysmon Event ID 1, Image powershell.exe, CommandLine powershell.exe -e <Base64>, ParentImage cmd.exe, User MINISOC\alice.smith.
+- Traced the chain: my PowerShell (parent explorer.exe) started cmd.exe, which started powershell.exe -e.
+- Decoded the Base64 on my host: & (gcm ('ie{0}' -f 'x')) ("Wr"+"it"+"e-H"+"ost ..."), which is Invoke-Expression "Write-Host 'Hello, from PowerShell!'".
+
+Learned
+- Always read an Atomic test (-ShowDetails) before running it.
+- SPL: Field=value filters a field. "image: PowerShell" is just two keywords and matches any event containing them.
+- Image="*\\powershell.exe" excludes splunk-powershell.exe. In SPL, \\ is one literal backslash.
+- Too many similar events: filter on fields, compare with | table, follow ParentProcessId to ProcessId, and explain away every event that is not the attack.
+- splunk-powershell.exe with parent splunkd.exe is the forwarder's own noise.
+- The User field shows NOT_TRANSLATED plus the real user. Trust the Sysmon value.
+- powershell -e takes Base64 of UTF-16LE text. Decode with [System.Text.Encoding]::Unicode.GetString([Convert]::FromBase64String('...')). Decoding does not run it.
+- Obfuscation splits words ("Wr"+"ite") and builds names at run time ('ie{0}' -f 'x' = iex) so filters looking for iex or Write-Host miss it.
+- Obfuscation hides the content but leaves its own fingerprint: the -e flag and an unusual parent like cmd.exe.
+- attack-log.csv is the answer key for testing a detection: fired at the logged time = true positive, silent = missed attack, fired at other times = false positive.
+
 ## 2026-11-19 | W7 Session 2/3: Get Atomic Red Team onto WS01
 Did
 - Downloaded the Invoke-AtomicRedTeam module and its dependency powershell-yaml with Save-Module (download only, no install) to E:\Mini-SOC Project\AtomicStaging, outside the repo.

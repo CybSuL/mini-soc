@@ -1,7 +1,10 @@
 ﻿# TODO
 
-## W7
-- [ ] W7 Session 3/3: Run T1059.001, find its Sysmon Event ID 1 in Splunk, record the run in attack-log.csv.
+## Before W8
+- [ ] Record the W7 review video
+
+## W8
+- [ ] W8: Detection #1-2: PowerShell abuse, local account creation (T1136). Learn the Sigma format.
 
 ## Before 2026-12-19
 - [ ] Switch Splunk from the Enterprise Trial license to the Free license
@@ -31,3 +34,4 @@
 - [x] attack-log.csv created to record every attack test (2026-11-15)
 - [x] W7 Session 1/3: Ubuntu VM isolated, attack-log.csv created, Kali VM built at 192.168.50.250 on VMnet2, snapshot taken (2026-11-17)
 - [x] W7 Session 2/3: Atomic Red Team on WS01 with T1059.001 tests, Defender exclusion for C:\AtomicRedTeam, snapshot atomic-ready taken (2026-11-19)
+- [x] W7 Session 3/3: Ran T1059.001-17 on WS01, found it in Splunk, decoded the command, logged it in attack-log.csv (2026-11-20)

@@ -1,1 +1,2 @@
 ﻿date,time_utc,host,technique,test_id,notes
+2026-11-20,05:40,WS01,T1059.001,17,"PowerShell Command Execution (a538de64). Encoded command via cmd.exe as MINISOC\alice.smith. Ran, printed Hello, from PowerShell!"
