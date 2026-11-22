@@ -1,10 +1,12 @@
 ﻿# TODO
 
-## Before W8
-- [ ] Record the W7 review video
+## W8: Detection #1-2: PowerShell abuse, local account creation (T1136). Learn the Sigma format.
+- [ ] W8 Session 2/4: Write my own Sigma rule for powershell -e that also catches my W7 attack, convert it to SPL, test it in Splunk against attack-log.csv, save it in detections/
+- [ ] W8 Session 3/4: Run Atomic test T1136.001 (local account creation) on WS01, log it in attack-log.csv, find Event ID 4720 in Splunk
+- [ ] W8 Session 4/4: Write a Sigma rule for account creation, convert it to SPL, test it against attack-log.csv, document both detection folders
 
-## W8
-- [ ] W8: Detection #1-2: PowerShell abuse, local account creation (T1136). Learn the Sigma format.
+## W8 downloads
+- [ ] T1136.001.yaml from the atomic-red-team repo, before W8 Session 3/4
 
 ## Before 2026-12-19
 - [ ] Switch Splunk from the Enterprise Trial license to the Free license
@@ -35,3 +37,5 @@
 - [x] W7 Session 1/3: Ubuntu VM isolated, attack-log.csv created, Kali VM built at 192.168.50.250 on VMnet2, snapshot taken (2026-11-17)
 - [x] W7 Session 2/3: Atomic Red Team on WS01 with T1059.001 tests, Defender exclusion for C:\AtomicRedTeam, snapshot atomic-ready taken (2026-11-19)
 - [x] W7 Session 3/3: Ran T1059.001-17 on WS01, found it in Splunk, decoded the command, logged it in attack-log.csv (2026-11-20)
+- [x] W7 review video skipped, videos are now optional (2026-11-22)
+- [x] W8 Session 1/4: Read a SigmaHQ encoded PowerShell rule, found it misses my W7 attack, installed sigma-cli, converted the rule to SPL (2026-11-22)

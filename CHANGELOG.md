@@ -1,5 +1,28 @@
 ﻿# CHANGELOG
 
+## 2026-11-22 | W8 Session 1/4: Learn the Sigma format
+Did
+- Made weekly review videos optional and skipped the W7 video.
+- Read the SigmaHQ rule "Suspicious Encoded PowerShell Command Line" (proc_creation_win_powershell_base64_encoded_cmd.yml).
+- Checked it by hand against my W7 attack: my Base64 starts with JgA (encoded "&"), which is not in the rule's prefix list, so the rule would not fire.
+- Installed sigma-cli 4.0.1, pysigma-backend-splunk 3.0.1 and the sysmon pipeline plugin on my host.
+- Downloaded the rule to E:\Mini-SOC Project\sigma-practice (outside the repo) and converted it to SPL.
+- Skipped running the converted SPL in Splunk. Testing happens in Session 2 with my own rule.
+
+Learned
+- Sigma = a detection format written once and converted to SPL, KQL and others.
+- Rule parts: metadata (title, id, status, description, references, author, date), tags, logsource, detection, falsepositives, level.
+- logsource is generic: category process_creation covers both Sysmon Event ID 1 and Security 4688.
+- detection = named selections plus a condition that combines them. Several values under one field = OR. "all of selection_cli_*" = every selection starting with selection_cli_ must match.
+- Modifiers in SPL: endswith becomes "*\\x", contains becomes "*x*".
+- The first Base64 characters after powershell -e reveal how the command starts: JAB = "$", JgA = "&".
+- This rule needs " -e" AND a known Base64 prefix. Starting the command with "&" evades it.
+- " -e" alone also matches -ExecutionPolicy and -ErrorAction. Too broad = alert flood, too narrow = missed attacks.
+- level (informational, low, medium, high, critical) = how urgently an analyst should look. It mixes impact and confidence.
+- falsepositives = known harmless triggers. This rule has none, which is a gap.
+- Tags link to ATT&CK: attack.execution = tactic, attack.t1059.001 = technique.
+- sigma-cli: -t = target language, -p = pipelines that translate generic names to my log names (lower priority number runs first). index=windows must be added by hand.
+
 ## 2026-11-20 | W7 Session 3/3: Run the first attack and find it in Splunk
 Did
 - Read Atomic test T1059.001-17 (PowerShell Command Execution) with -ShowDetails before running it: cmd.exe executor, no admin, no dependencies.
