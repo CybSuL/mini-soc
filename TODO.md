@@ -1,41 +1,23 @@
 ﻿# TODO
 
 ## W8: Detection #1-2: PowerShell abuse, local account creation (T1136). Learn the Sigma format.
-- [ ] W8 Session 2/4: Write my own Sigma rule for powershell -e that also catches my W7 attack, convert it to SPL, test it in Splunk against attack-log.csv, save it in detections/
-- [ ] W8 Session 3/4: Run Atomic test T1136.001 (local account creation) on WS01, log it in attack-log.csv, find Event ID 4720 in Splunk
-- [ ] W8 Session 4/4: Write a Sigma rule for account creation, convert it to SPL, test it against attack-log.csv, document both detection folders
+- [x] W8 Session 1/5: Read a SigmaHQ encoded PowerShell rule, found it misses my W7 attack, installed sigma-cli, converted the rule to SPL (2026-11-22)
+- [x] W8 Session 2/5: Wrote my own Sigma rule for encoded PowerShell flags, sigma check passes (2026-11-23)
+- [ ] W8 Session 3/5: Convert my encoded PowerShell rule to SPL, test it in Splunk against the W7 attack in attack-log.csv, check for false positives, save the SPL in the detection folder
+- [ ] W8 Session 4/5: Run Atomic test T1136.001 (local account creation) on WS01, log it in attack-log.csv, find Event ID 4720 in Splunk
+- [ ] W8 Session 5/5: Write a Sigma rule for account creation, convert it to SPL, test it against attack-log.csv, document both detection folders
 
 ## W8 downloads
-- [ ] T1136.001.yaml from the atomic-red-team repo, before W8 Session 3/4
+- [ ] T1136.001.yaml from the atomic-red-team repo, before W8 Session 4/5
 
 ## Before 2026-12-19
 - [ ] Switch Splunk from the Enterprise Trial license to the Free license
 
-## Done
-- [x] W1 Session 1/2: Git and GitHub basics (2026-10-10)
-- [x] W1 Session 2/2: Created and pushed the mini-soc repo (2026-10-11)
-- [x] W2 Session 1/3: Windows Security events 4624, 4625, 4688 (2026-10-12)
-- [x] W2 Session 2/3: Sysmon event IDs (2026-10-13)
-- [x] W2 Session 3/3: MITRE ATT&CK basics (2026-10-14)
-- [x] W3 Session 1/3: VMware installed, isolated lab network VMnet2 (2026-10-15)
-- [x] W3 Session 2/3: Ubuntu Server VM built at 192.168.50.20, SSH working, snapshot taken (2026-10-16)
-- [x] W3 Session 3/3: Basic Linux commands, read and filtered SSH logs (2026-10-17)
-- [x] W4 Session 1/3: Windows Server VM DC01 built at 192.168.50.10, snapshot taken (2026-10-18)
-- [x] W4 Session 2/3: Splunk Enterprise installed on the Ubuntu VM, starts on boot, snapshot taken (2026-10-20)
-- [x] W4 Session 3/3: Splunk web UI reachable from my host, receiving on port 9997 tested from DC01 (2026-10-21)
-- [x] W4 review video recorded (2026-10-22)
-- [x] W5 Session 1/3: DC01 promoted, forest minisoc.lab created, AD DS and DNS verified, snapshot taken (2026-10-24)
-- [x] W5 Session 2/3: OUs, users alice.smith, bob.jones, sul.admin and group Finance created, snapshot taken (2026-10-25)
-- [x] W5 Session 3/3: Windows 11 client WS01 built at 192.168.50.100, joined to minisoc.lab, moved to Workstations, snapshots taken (2026-10-28)
-- [x] W5 review video recorded (before 2026-11-02)
-- [x] W6 Session 1/3: Sysmon installed with the SwiftOnSecurity config on DC01 and WS01, running on both (2026-11-03)
-- [x] W6 Session 2/3: Universal Forwarder on DC01 and WS01 sending Security and Sysmon logs to the index windows, clocks fixed (2026-11-13)
-- [x] W6 Session 3/3: Found Sysmon Event ID 1 in Splunk, data-flow diagram drawn from memory, inputs.conf added to configs/ (2026-11-14)
-- [x] W6 review video recorded (2026-11-15)
-- [x] Ubuntu VM NAT adapter disconnected before running attacks (2026-11-15)
-- [x] attack-log.csv created to record every attack test (2026-11-15)
-- [x] W7 Session 1/3: Ubuntu VM isolated, attack-log.csv created, Kali VM built at 192.168.50.250 on VMnet2, snapshot taken (2026-11-17)
-- [x] W7 Session 2/3: Atomic Red Team on WS01 with T1059.001 tests, Defender exclusion for C:\AtomicRedTeam, snapshot atomic-ready taken (2026-11-19)
-- [x] W7 Session 3/3: Ran T1059.001-17 on WS01, found it in Splunk, decoded the command, logged it in attack-log.csv (2026-11-20)
-- [x] W7 review video skipped, videos are now optional (2026-11-22)
-- [x] W8 Session 1/4: Read a SigmaHQ encoded PowerShell rule, found it misses my W7 attack, installed sigma-cli, converted the rule to SPL (2026-11-22)
+## Done (details per session in CHANGELOG.md)
+- [x] W1 (2026-10-10 to 2026-10-11): Git and GitHub basics, mini-soc repo created and pushed
+- [x] W2 (2026-10-12 to 2026-10-14): Windows Security events 4624, 4625, 4688, Sysmon event IDs, MITRE ATT&CK basics
+- [x] W3 (2026-10-15 to 2026-10-17): VMware, isolated network VMnet2, Ubuntu Server VM at 192.168.50.20 with SSH, basic Linux commands
+- [x] W4 (2026-10-18 to 2026-10-22): Windows Server VM DC01 at 192.168.50.10, Splunk Enterprise on the Ubuntu VM, web UI and port 9997 working. Review video recorded 2026-10-22
+- [x] W5 (2026-10-24 to 2026-10-28): DC01 promoted (forest minisoc.lab), OUs, users and groups, Windows 11 client WS01 at 192.168.50.100 joined. Review video recorded before 2026-11-02
+- [x] W6 (2026-11-03 to 2026-11-15): Sysmon and Universal Forwarder on DC01 and WS01, Sysmon Event ID 1 in Splunk, data-flow diagram. Review video recorded 2026-11-15
+- [x] W7 (2026-11-15 to 2026-11-22): Ubuntu VM isolated, attack-log.csv, Kali VM at 192.168.50.250, Atomic Red Team on WS01, T1059.001-17 run and found in Splunk. Review video skipped (videos now optional)

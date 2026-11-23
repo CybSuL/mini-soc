@@ -1,5 +1,22 @@
 ﻿# CHANGELOG
 
+## 2026-11-23 | W8 Session 2/5: Write my own Sigma rule for encoded PowerShell
+Did
+- Split W8 into 5 shorter sessions because of the holiday week. Writing the rule (Session 2) and testing it (Session 3) are now separate.
+- Created detections/T1059.001-encoded-powershell/proc_creation_win_powershell_encoded_flag.yml.
+- The rule matches powershell.exe or pwsh.exe AND an encoded flag (' -e ', ' -en ', ' -ec ', ' -enc') with the windash modifier. Level medium.
+- Replaced an invalid id with a fresh GUID. sigma check passes with 0 errors and 0 issues.
+
+Learned
+- PowerShell accepts any unambiguous short form of a parameter: -e, -en, -enc up to -EncodedCommand, plus the alias -ec.
+- ' -e ' with a trailing space matches only that flag, not -ExecutionPolicy. ' -enc' needs no space because every longer form starts with it.
+- The windash modifier makes - also match /.
+- YAML: values starting with a space need quotes. Indent with spaces, never tabs.
+- condition with or = either selection is enough, so every PowerShell start would alert. and = both must match.
+- Encoded command = a script passed as Base64 so quotes, $ and newlines survive. Legit users: SCCM, Intune, monitoring agents, installers. Attackers use it to hide the content. Same flag, different intent, so level medium.
+- My rule matches the flag, not the Base64 content, so it catches my W7 attack (JgA) that the SigmaHQ rule missed.
+- Every Sigma rule needs a unique UUID as its id (New-Guid). sigma check also checks SigmaHQ style, like a filename length of 10 to 90 characters.
+
 ## 2026-11-22 | W8 Session 1/4: Learn the Sigma format
 Did
 - Made weekly review videos optional and skipped the W7 video.
@@ -319,3 +336,4 @@ Learned
 - Branch = side path. Main stays untouched until merge.
 - Pull request asks to merge, merge accepts.
 - mini-soc uses main only. Commit whenever something works.
+
