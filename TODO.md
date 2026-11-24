@@ -3,7 +3,7 @@
 ## W8: Detection #1-2: PowerShell abuse, local account creation (T1136). Learn the Sigma format.
 - [x] W8 Session 1/5: Read a SigmaHQ encoded PowerShell rule, found it misses my W7 attack, installed sigma-cli, converted the rule to SPL (2026-11-22)
 - [x] W8 Session 2/5: Wrote my own Sigma rule for encoded PowerShell flags, sigma check passes (2026-11-23)
-- [ ] W8 Session 3/5: Convert my encoded PowerShell rule to SPL, test it in Splunk against the W7 attack in attack-log.csv, check for false positives, save the SPL in the detection folder
+- [x] W8 Session 3/5: Converted my rule to SPL, caught the W7 attack in Splunk (1 true positive, 0 false positives), saved splunk.spl (2026-11-24)
 - [ ] W8 Session 4/5: Run Atomic test T1136.001 (local account creation) on WS01, log it in attack-log.csv, find Event ID 4720 in Splunk
 - [ ] W8 Session 5/5: Write a Sigma rule for account creation, convert it to SPL, test it against attack-log.csv, document both detection folders
 

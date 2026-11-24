@@ -1,5 +1,21 @@
 ﻿# CHANGELOG
 
+## 2026-11-24 | W8 Session 3/5: Test my encoded PowerShell rule in Splunk
+Did
+- Converted my rule to SPL with sigma-cli (sysmon and splunk_windows pipelines).
+- Ran it in Splunk with index=windows over the last 30 days: 1 event, the W7 attack T1059.001-17 on WS01 (2026-11-20 05:40 UTC, parent cmd.exe).
+- Scored against attack-log.csv: 1 true positive, 0 false positives, 0 missed attacks. The SigmaHQ rule would have missed it.
+- Saved the ready-to-run SPL (with index=windows) as detections/T1059.001-encoded-powershell/splunk.spl.
+
+Learned
+- windash turns each value into 5 variants: - / – — ―. PowerShell accepts all of them as a parameter prefix, and attackers use the look-alike dashes to evade rules that only search for -. 4 flags became 20 CommandLine values.
+- In SPL, a space between conditions means AND.
+- | table field1 field2 shows only chosen fields as columns, easier than reading raw events.
+- Splunk shows times in my time zone: 05:40 UTC appears as 08:40 Riyadh time.
+- sigma convert -o writes the output file directly, which keeps special characters intact.
+- 0 false positives in my lab does not mean 0 in a real company. Tools like SCCM and Intune would trigger it, so level stays medium.
+- attack-log.csv shows both what fired correctly and what should have fired but did not.
+
 ## 2026-11-23 | W8 Session 2/5: Write my own Sigma rule for encoded PowerShell
 Did
 - Split W8 into 5 shorter sessions because of the holiday week. Writing the rule (Session 2) and testing it (Session 3) are now separate.
@@ -336,4 +352,5 @@ Learned
 - Branch = side path. Main stays untouched until merge.
 - Pull request asks to merge, merge accepts.
 - mini-soc uses main only. Commit whenever something works.
+
 
