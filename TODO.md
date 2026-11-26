@@ -1,14 +1,12 @@
 ﻿# TODO
 
 ## W8: Detection #1-2: PowerShell abuse, local account creation (T1136). Learn the Sigma format.
-- [x] W8 Session 1/5: Read a SigmaHQ encoded PowerShell rule, found it misses my W7 attack, installed sigma-cli, converted the rule to SPL (2026-11-22)
-- [x] W8 Session 2/5: Wrote my own Sigma rule for encoded PowerShell flags, sigma check passes (2026-11-23)
-- [x] W8 Session 3/5: Converted my rule to SPL, caught the W7 attack in Splunk (1 true positive, 0 false positives), saved splunk.spl (2026-11-24)
-- [ ] W8 Session 4/5: Run Atomic test T1136.001 (local account creation) on WS01, log it in attack-log.csv, find Event ID 4720 in Splunk
-- [ ] W8 Session 5/5: Write a Sigma rule for account creation, convert it to SPL, test it against attack-log.csv, document both detection folders
-
-## W8 downloads
-- [ ] T1136.001.yaml from the atomic-red-team repo, before W8 Session 4/5
+- [x] W8 Session 1/6: Read a SigmaHQ encoded PowerShell rule, found it misses my W7 attack, installed sigma-cli, converted the rule to SPL (2026-11-22)
+- [x] W8 Session 2/6: Wrote my own Sigma rule for encoded PowerShell flags, sigma check passes (2026-11-23)
+- [x] W8 Session 3/6: Converted my rule to SPL, caught the W7 attack in Splunk (1 true positive, 0 false positives), saved splunk.spl (2026-11-24)
+- [x] W8 Session 4/6: Downloaded T1136.001 tests, copied them to WS01, listed the 4 Windows tests (2026-11-26)
+- [ ] W8 Session 5/6: Run Atomic tests T1136.001-4 and T1136.001-9 on WS01, log them in attack-log.csv, find both Event ID 4720 in Splunk
+- [ ] W8 Session 6/6: Write a Sigma rule for account creation, convert it to SPL, test it against attack-log.csv, document both detection folders
 
 ## Before 2026-12-19
 - [ ] Switch Splunk from the Enterprise Trial license to the Free license

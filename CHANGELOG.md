@@ -1,5 +1,18 @@
 ﻿# CHANGELOG
 
+## 2026-11-26 | W8 Session 4/6: Prepare the local account creation attack (T1136.001)
+Did
+- Split the old W8 Session 4 into two short sessions: prepare (today) and run (next). W8 now has 6 sessions.
+- Downloaded only T1136.001.yaml from the atomic-red-team repo to E:\Mini-SOC Project\AtomicStaging\atomics\T1136.001.
+- Copied it to C:\AtomicRedTeam\atomics on WS01, signed in as sul.admin.
+- Listed the Windows tests with -ShowDetailsBrief: 4 (net user in cmd), 5 (New-LocalUser in PowerShell), 8 (new admin user), 9 (via .NET). Ran nothing.
+
+Learned
+- T1136.001 = Create Account: Local Account. Attackers create a local account as a backdoor to get back in later (Persistence).
+- One technique, many procedures: the 4 tests create an account in 4 different ways.
+- A rule matches text, not meaning. A rule on "net user" in CommandLine catches tests 4 and 8 but misses 5 (New-LocalUser) and 9 (.NET, no net.exe process).
+- Event ID 4720 (a user account was created) is written whatever tool is used. Detect on the event, not the command.
+
 ## 2026-11-24 | W8 Session 3/5: Test my encoded PowerShell rule in Splunk
 Did
 - Converted my rule to SPL with sigma-cli (sysmon and splunk_windows pipelines).
@@ -352,5 +365,6 @@ Learned
 - Branch = side path. Main stays untouched until merge.
 - Pull request asks to merge, merge accepts.
 - mini-soc uses main only. Commit whenever something works.
+
 
 
