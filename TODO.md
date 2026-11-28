@@ -5,8 +5,8 @@
 - [x] W8 Session 2/6: Wrote my own Sigma rule for encoded PowerShell flags, sigma check passes (2026-11-23)
 - [x] W8 Session 3/6: Converted my rule to SPL, caught the W7 attack in Splunk (1 true positive, 0 false positives), saved splunk.spl (2026-11-24)
 - [x] W8 Session 4/6: Downloaded T1136.001 tests, copied them to WS01, listed the 4 Windows tests (2026-11-26)
-- [ ] W8 Session 5/6: Run Atomic tests T1136.001-4 and T1136.001-9 on WS01, log them in attack-log.csv, find both Event ID 4720 in Splunk
-- [ ] W8 Session 6/6: Write a Sigma rule for account creation, convert it to SPL, test it against attack-log.csv, document both detection folders
+- [x] W8 Session 5/6: Ran T1136.001-4 and T1136.001-5 on WS01 (test 9 needs internet), logged 3 runs in attack-log.csv, found three 4720 events and a 4726 rollback in Splunk, cleaned up (2026-11-28)
+- [ ] W8 Session 6/6: Write a Sigma rule for account creation (4720), convert it to SPL, test it against attack-log.csv, decide if the failed 10:19:38 attempt counts as a false positive, document both detection folders
 
 ## Before 2026-12-19
 - [ ] Switch Splunk from the Enterprise Trial license to the Free license

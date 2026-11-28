@@ -1,2 +1,5 @@
 ﻿date,time_utc,host,technique,test_id,notes
 2026-11-20,05:40,WS01,T1059.001,17,"PowerShell Command Execution (a538de64). Encoded command via cmd.exe as MINISOC\alice.smith. Ran, printed Hello, from PowerShell!"
+2026-11-28,10:19:38,WS01,T1136.001,4,Failed: password contained the username (domain complexity policy). Windows logged 4720 then 4726 (created, then rolled back). No account remains.
+2026-11-28,10:20:39,WS01,T1136.001,4,net user /add with -InputArgs password Lab#Atomic2026. Created T1136.001_CMD. Run as sul.admin.
+2026-11-28,10:23:25,WS01,T1136.001,5,New-LocalUser -NoPassword. Created T1136.001_PowerShell. Run as sul.admin.
